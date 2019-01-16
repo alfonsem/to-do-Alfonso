@@ -1,0 +1,17 @@
+header{
+    width: 100 vw;
+    height: 100px;
+    background: aqua;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+input{
+    all: initial;
+    color: black;
+    border-bottom: 1px solid rgb(122, 147, 226);
+}
+input::placeholder{
+    color: rgb(122, 147, 226);
+}
