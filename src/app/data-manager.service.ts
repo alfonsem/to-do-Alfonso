@@ -36,4 +36,16 @@ export class DataManagerService {
     return this.data;
   }
 
+  addNewList(name: string) {
+    const now = new Date();
+    const newList: List = {
+      listID: Date.now(),
+      createdAt: now,
+      modifiedAt: now,
+      name,
+      tasks: [],
+    };
+    this.data.lists.push(newList);
+  }
+
 }
