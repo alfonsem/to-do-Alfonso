@@ -2,7 +2,7 @@ import {
   Injectable
 } from '@angular/core';
 import {
-  List
+  List, Task
 } from './models.interfaces';
 
 @Injectable({
@@ -18,7 +18,24 @@ export class DataManagerService {
     lists: [{
         listID: 0,
         name: 'to do',
-        tasks: [],
+        tasks: [{
+          listID: 0,
+          taskID: 0,
+          text: 'tarea 1',
+          color: '',
+          completed: false,
+          createAt: new Date(),
+          modifiedAt: new Date()
+        },
+        {
+          listID: 0,
+          taskID: 1,
+          text: 'tarea 2',
+          color: '',
+          completed: false,
+          createAt: new Date(),
+          modifiedAt: new Date()
+        }],
         createdAt: new Date(),
         modifiedAt: new Date()
       },
@@ -46,6 +63,37 @@ export class DataManagerService {
       tasks: [],
     };
     this.data.lists.push(newList);
+  }
+
+  addNewtask(text: string, list: List){
+    const newTask : Task = {
+        listID: list.listID,
+        taskID: Date.now(),
+        text,
+        color: '',
+        completed: false,
+        createAt: new Date(),
+        modifiedAt: new Date()
+    };
+    this.data.lists = this.data.lists.map(listObj=>{
+      if(listObj.listID === list.listID){
+        listObj.tasks.push(newTask);
+      }
+      return listObj;
+    });
+  }
+
+  deleteList(list: List) {
+    this.data.lists = this.data.lists.filter(list => list.listID !== list.listID);
+  }
+
+  deleteTask(task: Task){
+    this.data.lists = this.data.lists.map(listObj => {
+      if(listObj.listID === listObj.listID){
+          listObj.tasks = listObj.tasks.filter(task => task.taskID !== task.taskID);
+      }
+      return listObj;
+    });
   }
 
 }
