@@ -12,6 +12,7 @@ export class BoardComponent implements OnInit {
 
   constructor(private dataManager: DataManagerService) { }
 
+  //Al inicio del programa recogemos los datos
   ngOnInit() {
     this.data = this.dataManager.getData();
     

@@ -1,0 +1,15 @@
+.list{
+    background-color: azure;
+    border: 1px black solid;
+    padding: 10px;
+    min-width: 300px;
+    min-height: 200px;
+}
+input{
+    all: initial;
+    color: black;
+    border-bottom: 1px solid rgb(122, 147, 226);
+}
+input::placeholder{
+    color: rgb(122, 147, 226);
+}
