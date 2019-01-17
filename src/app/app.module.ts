@@ -8,6 +8,7 @@ import { ListComponent } from './list/list.component';
 import { ShowListsComponent } from './show-lists/show-lists.component';
 import { TaskComponent } from './task/task.component';
 import { AddNewListComponent } from './add-new-list/add-new-list.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AddNewListComponent } from './add-new-list/add-new-list.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

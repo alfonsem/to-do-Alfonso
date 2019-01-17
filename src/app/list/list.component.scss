@@ -1,15 +1,26 @@
 .list{
     background-color: azure;
-    border: 1px black solid;
+    border: 1px rgb(122, 147, 226) solid;
+    border-radius: 0.3em;
+    margin : 10px;
     padding: 10px;
     min-width: 300px;
     min-height: 200px;
+}
+.list-header{
+    display: flex;
+    justify-content: space-between;
 }
 input{
     all: initial;
     color: black;
     border-bottom: 1px solid rgb(122, 147, 226);
+    padding-top: 40px;
 }
 input::placeholder{
     color: rgb(122, 147, 226);
+}
+#icono{
+    cursor: pointer;
+    opacity: 0.5;
 }

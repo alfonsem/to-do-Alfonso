@@ -1,0 +1,12 @@
+.task{
+    background: aqua;
+    border-radius: 0.3em;
+    padding: 0.3em;
+    margin: 0.3em 0;
+    display: flex;
+    justify-content: space-between;
+}
+#icono{
+    cursor: pointer;
+    opacity: 0.5;
+}

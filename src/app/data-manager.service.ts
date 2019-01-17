@@ -49,10 +49,12 @@ export class DataManagerService {
     ]
   }
 
+  //Devuelve los datos del array data
   getData(){
     return this.data;
   }
 
+  //Para añadir una nueva lista, recibimos el nombre de la lista
   addNewList(name: string) {
     const now = new Date();
     const newList: List = {
@@ -65,6 +67,7 @@ export class DataManagerService {
     this.data.lists.push(newList);
   }
 
+  //Para añadir una nueva tarea, recibimos el nombre de la tarea y la lista a la que pertenece
   addNewtask(text: string, list: List){
     const newTask : Task = {
         listID: list.listID,
@@ -75,6 +78,7 @@ export class DataManagerService {
         createAt: new Date(),
         modifiedAt: new Date()
     };
+    //Comprobamos que el listID de la tarea conincide con el listID de la lista
     this.data.lists = this.data.lists.map(listObj=>{
       if(listObj.listID === list.listID){
         listObj.tasks.push(newTask);
@@ -83,17 +87,23 @@ export class DataManagerService {
     });
   }
 
-  deleteList(list: List) {
-    this.data.lists = this.data.lists.filter(list => list.listID !== list.listID);
+  //Para borrar una lista, recibimos el listID y filtramos un array con los que no coinciden
+  deleteList(id: number) {
+    this.data.lists = this.data.lists.filter(list => list.listID !== id);
   }
 
-  deleteTask(task: Task){
+  //Para borrar una tarea, recibimos la tarea y filtramos un array con los que no coinciden con el taskID
+  deleteTask(task: Task) {
     this.data.lists = this.data.lists.map(listObj => {
-      if(listObj.listID === listObj.listID){
-          listObj.tasks = listObj.tasks.filter(task => task.taskID !== task.taskID);
+      if (listObj.listID === task.listID) {
+        listObj.tasks = listObj.tasks.filter(taskObj => taskObj.taskID !== task.taskID);
       }
       return listObj;
     });
+  }
+
+  editingListName(list: List){
+    this.data.lists = this.data.lists.map(listObj => (listObj.listID === list.listID ? list : listObj));
   }
 
 }
