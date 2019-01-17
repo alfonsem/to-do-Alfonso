@@ -6,6 +6,15 @@
     display: flex;
     justify-content: space-between;
 }
+input{
+    all: initial;
+    color: black;
+    border-bottom: 1px solid rgb(122, 147, 226);
+    padding-top: 40px;
+}
+input::placeholder{
+    color: rgb(122, 147, 226);
+}
 #icono{
     cursor: pointer;
     opacity: 0.5;

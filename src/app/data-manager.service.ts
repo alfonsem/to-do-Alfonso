@@ -102,8 +102,22 @@ export class DataManagerService {
     });
   }
 
+  //Para editar el nombre de la lista
   editingListName(list: List){
     this.data.lists = this.data.lists.map(listObj => (listObj.listID === list.listID ? list : listObj));
+  }
+
+  //Para editar el nombre la tarea
+  editingTaskName(task: Task){
+    this.data.lists = this.data.lists.map(listObj => {
+      if (listObj.listID === task.listID) {
+        listObj.tasks = listObj.tasks.map(listTaskObj => {
+          listTaskObj.text === listTaskObj.text ? task : listTaskObj;
+          return listTaskObj;
+        });
+      }
+      return listObj;
+    });
   }
 
 }
