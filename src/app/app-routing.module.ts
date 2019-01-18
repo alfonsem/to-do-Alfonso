@@ -5,6 +5,7 @@ import { ViewLoginComponent } from './view-login/view-login.component';
 import { ViewRegisterComponent } from './view-register/view-register.component';
 
 const routes: Routes = [
+  {path: '', component: BoardComponent},
   {path: 'login', component: ViewLoginComponent},
   {path: 'register', component: ViewRegisterComponent},
   {path: 'board', component: BoardComponent},
