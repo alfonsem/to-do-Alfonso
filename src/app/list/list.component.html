@@ -5,7 +5,7 @@
   <div class="list-header">
       <!-- Oculto los span o los muestro con la propiedad [hidden] y la variable editing
       sea true o false -->
-      <span [hidden]="!editing"><h1>{{list.name}}</h1></span>
+      <span [hidden]="!editing" (dblclick)="editList()"><h1>{{list.name}}</h1></span>
       <span [hidden]="editing"><input class="text" (keyup.enter)="editListName()" [(ngModel)]="newListName"/></span>
       <div>
           <i id="icono" class="material-icons" (click)="cambioEditing()" >edit</i>

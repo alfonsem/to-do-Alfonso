@@ -41,4 +41,9 @@ export class ListComponent {
     console.log(this.list.name);
   }
 
+  //Método para el doble click que me cambia el valor de editing
+  editList(){
+    this.editing = false;
+  }
+
 }

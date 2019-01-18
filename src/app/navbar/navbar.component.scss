@@ -1,0 +1,22 @@
+nav{
+    width: 100 vw;
+    height: 100px;
+    background: aqua;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.loginRegisterContainer{
+    display: flex;
+    flex-direction: row
+}
+a{
+    all: initial;
+    color: rgb(122, 147, 226);
+    border-bottom: 1px solid rgb(122, 147, 226);
+    margin: 10px;
+}
+.active{
+    color: rgb(71, 95, 173);
+}

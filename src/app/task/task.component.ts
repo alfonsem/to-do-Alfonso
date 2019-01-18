@@ -44,7 +44,7 @@ export class TaskComponent implements OnInit {
 
   //Método para cuando se pierde el foco
   editLoose(){
-    this.editing = false;
+    this.editing = true;
   }
 
 }
