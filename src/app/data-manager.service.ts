@@ -120,4 +120,21 @@ export class DataManagerService {
     });
   }
 
+  //Método sin utilizar
+  //
+  //
+  //
+  //
+  editTask(task: Task){
+    this.data.lists = this.data.lists.map(listObj => {
+      if (listObj.listID === task.listID) {
+        listObj.tasks = listObj.tasks.map(listTaskObj => {
+          listTaskObj.text === listTaskObj.text ? task : listTaskObj;
+          return listTaskObj;
+        });
+      }
+      return listObj;
+    });
+  }
+
 }

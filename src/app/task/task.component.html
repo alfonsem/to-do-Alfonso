@@ -3,8 +3,8 @@
 </p> -->
 <div class="task">
   <!-- <div>{{ task.text }}</div> -->
-  <span [hidden]="!editing">{{ task.text }}</span>
-  <span [hidden]="editing"><input class="text" (keyup.enter)="editTaskName()" [(ngModel)]="newTaskName"/></span>
+  <span [hidden]="!editing" (dblclick)="editTask()" >{{ task.text }}</span>
+  <span [hidden]="editing"><input class="text" (keyup.enter)="editTaskName()" [(ngModel)]="newTaskName" (blur)="editLoose()"/></span>
   <div>
       <i id="icono" class="material-icons" (click)="cambioEditing()" >edit</i>
       <i id="icono" class="material-icons" (click)="delete()" >delete</i>
