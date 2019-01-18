@@ -22,7 +22,6 @@ export class TaskComponent implements OnInit {
   //Para borrar una tarea, llamamos al método deleteTask de Data ManagerService
   delete(){
     this.dataManager.deleteTask(this.task);
-    console.log('hola');
   }
 
   //Para cambiar el estado del booleno editing
