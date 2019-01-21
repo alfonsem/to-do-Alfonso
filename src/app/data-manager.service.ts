@@ -17,37 +17,38 @@ export class DataManagerService {
   data: {
     lists: Array < List >
   } = {
-    lists: [{
-        listID: 0,
-        name: 'to do',
-        tasks: [{
-          listID: 0,
-          taskID: 0,
-          text: 'tarea 1',
-          color: '',
-          completed: false,
-          createAt: new Date(),
-          modifiedAt: new Date()
-        },
-        {
-          listID: 0,
-          taskID: 1,
-          text: 'tarea 2',
-          color: '',
-          completed: false,
-          createAt: new Date(),
-          modifiedAt: new Date()
-        }],
-        createdAt: new Date(),
-        modifiedAt: new Date()
-      },
-      {
-        listID: 1,
-        name: 'doing',
-        tasks: [],
-        createdAt: new Date(),
-        modifiedAt: new Date()
-      }
+    lists: [
+      // {
+      //   listID: 0,
+      //   name: 'to do',
+      //   tasks: [{
+      //     listID: 0,
+      //     taskID: 0,
+      //     text: 'tarea 1',
+      //     color: '',
+      //     completed: false,
+      //     createAt: new Date(),
+      //     modifiedAt: new Date()
+      //   },
+      //   {
+      //     listID: 0,
+      //     taskID: 1,
+      //     text: 'tarea 2',
+      //     color: '',
+      //     completed: false,
+      //     createAt: new Date(),
+      //     modifiedAt: new Date()
+      //   }],
+      //   createdAt: new Date(),
+      //   modifiedAt: new Date()
+      // },
+      // {
+      //   listID: 1,
+      //   name: 'doing',
+      //   tasks: [],
+      //   createdAt: new Date(),
+      //   modifiedAt: new Date()
+      // }
     ]
   }
 
