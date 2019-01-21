@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { List } from '../models.interfaces';
 import { DataManagerService } from '../data-manager.service';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-list',
@@ -12,13 +13,15 @@ export class ListComponent {
   editing: boolean = true;
   newListName: string = '';
 
-  constructor(private dataManager : DataManagerService) { }
+  constructor(private dataManager : DataManagerService, private api: ApiService) { }
 
   //Método con el que añadimos una tarea nueva llamando al serviceManager y su método addNewtask()
   addTask(ev){
     if(ev.target.value.trim()!== ''){
       this.dataManager.addNewtask(ev.target.value.trim(), this.list);
       console.log(ev.target.value);
+
+      this.api.newTask(this.list.listID, ev.target.value.trim());
       ev.target.value = '';  //Vaciamos el input
     }
   }

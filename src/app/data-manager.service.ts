@@ -4,12 +4,14 @@ import {
 import {
   List, Task
 } from './models.interfaces';
+import { ApiService } from './api.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataManagerService {
-  //constructor() { }
+  constructor(private api: ApiService, private router: Router) { }
   
   //Damos datos a "data" que es un array de Listas para probar el funcionamiento
   data: {
@@ -51,6 +53,7 @@ export class DataManagerService {
 
   //Devuelve los datos del array data
   getData(){
+    this.loadDataFromBackend();
     return this.data;
   }
 
@@ -88,8 +91,17 @@ export class DataManagerService {
   }
 
   //Para borrar una lista, recibimos el listID y filtramos un array con los que no coinciden
-  deleteList(id: number) {
-    this.data.lists = this.data.lists.filter(list => list.listID !== id);
+  // deleteList(id: number) {
+  //   this.data.lists = this.data.lists.filter(list => list.listID !== id);
+  // }
+
+
+  //Para borrar una lista, recibimos el id de la lista, y usamos el método del apiService
+  deleteList(listId: number) {
+    // this.data.lists = this.data.lists.filter(list => list.listId !== listId);
+    this.api.deleteList(listId).then(res => {
+      this.loadDataFromBackend();
+    });
   }
 
   //Para borrar una tarea, recibimos la tarea y filtramos un array con los que no coinciden con el taskID
@@ -135,6 +147,41 @@ export class DataManagerService {
       }
       return listObj;
     });
+  }
+
+
+  //Método para recibir todos los datos que tenemos guardados en la API, recibimos listas y sus tareas
+  loadDataFromBackend() {
+    this.api
+      .getLists()
+      .then((rawLists: Array<any>) => {
+        console.log(rawLists);
+        const lists = rawLists.map(rawList => ({
+          listID: rawList.id,
+          createdAt: rawList.createdAt,
+          modifiedAt: rawList.updatedAt,
+          name: rawList.name,
+          tasks: [],
+        }));
+        Promise.all(
+          lists.map(async (list: List) => {
+            list.tasks = await this.api.getTasks(list.listID);
+            list.tasks = list.tasks.map((rawTask: any) => ({
+              listID: rawTask.idlist,
+              taskID: rawTask.id,
+              text: rawTask.task,
+              completed: false,
+              color: 'white',
+              createAt: new Date(rawTask.createAt),
+              modifiedAt: new Date(rawTask.updatedAt),
+            }));
+            return list;
+          }),
+        ).then(lists => {
+          this.data.lists = lists;
+        });
+      })
+      .catch(() => this.router.navigate(['/login']));
   }
 
 }
