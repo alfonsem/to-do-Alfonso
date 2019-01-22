@@ -165,6 +165,7 @@ export class DataManagerService {
         });
       })
       .catch(() => this.router.navigate(['/login']));
+      console.log(JSON.stringify(this.data));
   }
 
 }

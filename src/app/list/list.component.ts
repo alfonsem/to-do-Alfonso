@@ -29,6 +29,7 @@ export class ListComponent {
   //Método para borrar una lista llamando al serviceManager y su método deleteList()
   delete(){
     this.dataManager.deleteList(this.list.listID);
+    this.dataManager.deleteTasks(this.list.listID); //Vaciamos las tareas de la lista (por un fallo de la API)
   }
 
   //Método para borrar todas las tareas de la lista
