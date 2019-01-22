@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
 
@@ -7,14 +7,12 @@ import { Router } from '@angular/router';
   templateUrl: './view-login.component.html',
   styleUrls: ['./view-login.component.scss']
 })
-export class ViewLoginComponent implements OnInit {
+export class ViewLoginComponent {
   username: string;
   password: string;
   error: any;
 
   constructor( private api: ApiService, private router: Router) { }
-
-  ngOnInit() {}
 
   //Método para logearnos, usamos el método de login de ApiService
   login() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ApiService } from '../api.service';
   templateUrl: './view-register.component.html',
   styleUrls: ['./view-register.component.scss']
 })
-export class ViewRegisterComponent implements OnInit {
+export class ViewRegisterComponent {
 
   username: string;
   password: string;
@@ -28,9 +28,6 @@ export class ViewRegisterComponent implements OnInit {
         });
     }
     console.log(password);
-  }
-
-  ngOnInit() {
   }
 
 }

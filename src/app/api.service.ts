@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Task } from './models.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +10,13 @@ export class ApiService {
   //Importamos el servicio HttpClient al constructor
   constructor(private http: HttpClient) { }
 
-  //Para registranos usamos el método post llamando a la API
+  //Método para registranos usamos el método post llamando a la API
   register(username: string , password: string ){
     const body = {username, password};
     return this.http.post('https://apitrello.herokuapp.com/users', body).toPromise();
   }
 
-  //Para logearno usamos el método de la API, nos devuelve el token que necesitamos y lo
+  //Método para logearno usamos el método de la API, nos devuelve el token que necesitamos y lo
   //guardamos en LocalStorage para ppoder utlizarlo cuando nos haga falta
   login(username: string, password: string) {
     const body = { username, password };
@@ -86,18 +85,19 @@ export class ApiService {
     });
   }
 
-  //Para borrar una lista , recibimos el id de la lista y usamos el delete del API
+  //Método para borrar una lista , recibimos el id de la lista y usamos el delete del API
   deleteList(id: number): any {
     const options = { headers: { Authorization: `Bearer ${this.jwt}` } };
     return this.http.delete('https://apitrello.herokuapp.com/list/' + id, options).toPromise();
   }
 
-  //Para borrar todas las tareas de la lista, usamos el deleteTask del API y recibimos el id de la lista
+  //Método para borrar todas las tareas de la lista, usamos el deleteTask del API y recibimos el id de la lista
   deleteTasks(idlist: number): any {
     const options = { headers: { Authorization: `Bearer ${this.jwt}` } };
     return this.http.delete('https://apitrello.herokuapp.com/list/tasks/'+idlist).toPromise();
   }
 
+  //Método para editar el nombre de la tarea, usamos el PUT del API
   editTaskFinal(taskName: string, idList: number, idTask: number){
     const options = { headers: { Authorization: `Bearer ${this.jwt}` } };
     const body = { task :taskName };

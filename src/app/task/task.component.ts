@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Task } from '../models.interfaces';
 import { DataManagerService } from '../data-manager.service';
 
@@ -7,7 +7,7 @@ import { DataManagerService } from '../data-manager.service';
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss']
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent {
   //Nos traemos la información de las tareas
   @Input() task: Task;
   editing: boolean = true;
@@ -16,13 +16,8 @@ export class TaskComponent implements OnInit {
   //Importamos en el contructor el DataManagerSeervice
   constructor(private dataManager: DataManagerService) { }
 
-  ngOnInit() {
-  }
-
   //Para borrar una tarea, llamamos al método deleteTask de Data ManagerService
   delete(){
-    //this.dataManager.deleteTask(this.task);
-
     //Cambiamos el método y borramos todas las tareas de una lista
     this.dataManager.deleteTasks(this.task.listID);
   }

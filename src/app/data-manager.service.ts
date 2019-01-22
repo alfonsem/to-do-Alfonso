@@ -55,7 +55,7 @@ export class DataManagerService {
     return this.data;
   }
 
-  //Para añadir una nueva lista, recibimos el nombre de la lista
+  //Método para añadir una nueva lista, recibimos el nombre de la lista
   addNewList(name: string) {
     const now = new Date();
     const newList: List = {
@@ -68,7 +68,7 @@ export class DataManagerService {
     this.data.lists.push(newList);
   }
 
-  //Para añadir una nueva tarea, recibimos el nombre de la tarea y la lista a la que pertenece
+  //Método para añadir una nueva tarea, recibimos el nombre de la tarea y la lista a la que pertenece
   addNewtask(text: string, list: List){
     const newTask : Task = {
         listID: list.listID,
@@ -88,14 +88,14 @@ export class DataManagerService {
     });
   }
 
-  //Para borrar una lista, recibimos el id de la lista, y usamos el método del apiService
+  //Método para borrar una lista, recibimos el id de la lista, y usamos el método del apiService
   deleteList(listId: number) {
     this.api.deleteList(listId).then(res => {
       this.loadDataFromBackend();
     });
   }
 
-  //Para borrar una tarea, recibimos la tarea y filtramos un array con los que no coinciden con el taskID
+  //Método para borrar una tarea, recibimos la tarea y filtramos un array con los que no coinciden con el taskID
   deleteTask(task: Task) {
     this.data.lists = this.data.lists.map(listObj => {
       if (listObj.listID === task.listID) {
@@ -105,7 +105,7 @@ export class DataManagerService {
     });
   }
 
-  //Para borrar las tareas
+  //Método para borrar las tareas
   deleteTasks(listId: number) {
     this.api.deleteTasks(listId).catch(res => {
       this.loadDataFromBackend();
