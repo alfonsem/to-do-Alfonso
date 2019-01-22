@@ -12,7 +12,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   //Para registranos usamos el método post llamando a la API
-  register(username, password){
+  register(username: string , password: string ){
     const body = {username, password};
     return this.http.post('https://apitrello.herokuapp.com/users', body).toPromise();
   }
@@ -90,5 +90,17 @@ export class ApiService {
   deleteList(id: number): any {
     const options = { headers: { Authorization: `Bearer ${this.jwt}` } };
     return this.http.delete('https://apitrello.herokuapp.com/list/' + id, options).toPromise();
+  }
+
+  //Para borrar todas las tareas de la lista, usamos el deleteTask del API y recibimos el id de la lista
+  deleteTasks(idlist: number): any {
+    const options = { headers: { Authorization: `Bearer ${this.jwt}` } };
+    return this.http.delete('https://apitrello.herokuapp.com/list/tasks/'+idlist).toPromise();
+  }
+
+  editTaskFinal(taskName: string, idList: number, idTask: number){
+    const options = { headers: { Authorization: `Bearer ${this.jwt}` } };
+    const body = { task :taskName };
+    return this.http.put('https://apitrello.herokuapp.com/tasks/'+idTask, body, options).toPromise();
   }
 }

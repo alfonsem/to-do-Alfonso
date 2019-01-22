@@ -4,7 +4,7 @@
       sea true o false -->
       <!-- <span [hidden]="!editing" (dblclick)="editList()"><h1>{{list.name}}</h1></span>
       <span [hidden]="editing"><input class="text" (keyup.enter)="editListName()" [(ngModel)]="newListName"/></span> -->
-      <span [hidden]="!editing"><h1>{{list.name}}</h1></span>
+      <span><h1>{{list.name}}</h1></span>
       <div>
           <!-- <i id="icono" class="material-icons" (click)="cambioEditing()" >edit</i> -->
           <i id="icono" class="material-icons" (click)="delete()" >delete</i>
@@ -12,4 +12,5 @@
   </div>
   <div class="tasks" ><app-task *ngFor="let taskObject of list.tasks" [task] = "taskObject" ></app-task></div>
   <input type="text" placeholder="añade una tarea" (keyup.enter)="addTask($event)"/>
+  <i id="icono" class="material-icons" (click)="deleteAllTasks()" >delete</i>
 </div>

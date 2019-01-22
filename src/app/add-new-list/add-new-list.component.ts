@@ -20,7 +20,6 @@ export class AddNewListComponent implements OnInit {
   addList(ev){
     if(ev.target.value.trim()!== ''){
       this.dataManager.addNewList(ev.target.value.trim());
-      //console.log(ev.target.value);
       this.api.newList(ev.target.value.trim());
       console.log(ev.target.value.trim()+'kkk');
       ev.target.value = '';  //Vaciamos el input

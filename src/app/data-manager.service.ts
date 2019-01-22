@@ -1,19 +1,16 @@
-import {
-  Injectable
-} from '@angular/core';
-import {
-  List, Task
-} from './models.interfaces';
+import { Injectable } from '@angular/core';
+import { List, Task } from './models.interfaces';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
+
 export class DataManagerService {
+
   constructor(private api: ApiService, private router: Router) { }
   
   //Damos datos a "data" que es un array de Listas para probar el funcionamiento
+  //Al final solo declaramos el array de datos
   data: {
     lists: Array < List >
   } = {
@@ -91,15 +88,8 @@ export class DataManagerService {
     });
   }
 
-  //Para borrar una lista, recibimos el listID y filtramos un array con los que no coinciden
-  // deleteList(id: number) {
-  //   this.data.lists = this.data.lists.filter(list => list.listID !== id);
-  // }
-
-
   //Para borrar una lista, recibimos el id de la lista, y usamos el método del apiService
   deleteList(listId: number) {
-    // this.data.lists = this.data.lists.filter(list => list.listId !== listId);
     this.api.deleteList(listId).then(res => {
       this.loadDataFromBackend();
     });
@@ -115,12 +105,19 @@ export class DataManagerService {
     });
   }
 
-  //Para editar el nombre de la lista
+  //Para borrar las tareas
+  deleteTasks(listId: number) {
+    this.api.deleteTasks(listId).catch(res => {
+      this.loadDataFromBackend();
+    });
+  }
+
+  //Método para editar el nombre de la lista
   editingListName(list: List){
     this.data.lists = this.data.lists.map(listObj => (listObj.listID === list.listID ? list : listObj));
   }
 
-  //Para editar el nombre la tarea
+  //Método para editar el nombre la tarea
   editingTaskName(task: Task){
     this.data.lists = this.data.lists.map(listObj => {
       if (listObj.listID === task.listID) {
@@ -131,25 +128,10 @@ export class DataManagerService {
       }
       return listObj;
     });
+    console.log(task.text+'hola'+ task.taskID+' '+task.listID);
+    this.api.editTaskFinal(task.text, task.listID, task.taskID);
+    this.loadDataFromBackend();
   }
-
-  //Método sin utilizar
-  //
-  //
-  //
-  //
-  editTask(task: Task){
-    this.data.lists = this.data.lists.map(listObj => {
-      if (listObj.listID === task.listID) {
-        listObj.tasks = listObj.tasks.map(listTaskObj => {
-          listTaskObj.text === listTaskObj.text ? task : listTaskObj;
-          return listTaskObj;
-        });
-      }
-      return listObj;
-    });
-  }
-
 
   //Método para recibir todos los datos que tenemos guardados en la API, recibimos listas y sus tareas
   loadDataFromBackend() {

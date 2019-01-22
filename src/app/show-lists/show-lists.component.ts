@@ -10,7 +10,6 @@ export class ShowListsComponent implements OnInit {
   @Input() lists: Array<List>;
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

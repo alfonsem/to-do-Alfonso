@@ -31,20 +31,27 @@ export class ListComponent {
     this.dataManager.deleteList(this.list.listID);
   }
 
+  //Método para borrar todas las tareas de la lista
+  deleteAllTasks(){
+    this.dataManager.deleteTasks(this.list.listID);
+  }
+
   //Para cambiar el estado del booleno editing
+  //Sin utilizar
   cambioEditing(){
     this.editing = false;
   }
 
   //Método para editar el nombre de la lista, llamando al serviceManager y su método editingListName()
+  //Sin utilizar
   editListName(){
     this.list.name = this.newListName;
     this.dataManager.editingListName(this.list);
     this.editing = true; //Cambiamos editing para que se vuelva a mostrar el nombre y no el input
-    console.log(this.list.name);
   }
 
   //Método para el doble click que me cambia el valor de editing
+  //Sin utilizar
   editList(){
     this.editing = false;
   }
