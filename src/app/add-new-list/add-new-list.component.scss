@@ -1,4 +1,4 @@
-header{
+.headerContainer{
     width: 100 vw;
     height: 100px;
     background: aqua;
@@ -14,4 +14,15 @@ input{
 }
 input::placeholder{
     color: rgb(122, 147, 226);
+}
+span{
+    background: aqua;
+    color: rgb(122, 147, 226);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    font-style: italic;
+    font-size: 0.7em;
 }
