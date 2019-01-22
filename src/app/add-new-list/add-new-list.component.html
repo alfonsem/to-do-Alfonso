@@ -1,6 +1,7 @@
 <header>
   <div class="headerContainer">
       <input type="text" placeholder="añade una nueva lista" (keyup.enter)="addList($event)"/>
+      <button routerLink="/login" (click)="logOut()">salir</button>
   </div>
   <span>&copy; 2019 AlfonsEM</span>
 </header>

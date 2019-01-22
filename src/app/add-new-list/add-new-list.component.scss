@@ -3,7 +3,7 @@
     height: 100px;
     background: aqua;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -11,6 +11,7 @@ input{
     all: initial;
     color: black;
     border-bottom: 1px solid rgb(122, 147, 226);
+    padding-top: 20px;
 }
 input::placeholder{
     color: rgb(122, 147, 226);
@@ -25,4 +26,15 @@ span{
     padding-right: 5px;
     font-style: italic;
     font-size: 0.7em;
+}
+button{
+    all: initial;
+    margin-top: 20px;
+    margin-right: 20px;
+    padding: 5px;
+    background: aqua;
+    border: 1px rgb(122, 147, 226) solid;
+    color: rgb(71, 95, 173);
+    border-radius: 10px;
+    align-self: flex-end;
 }

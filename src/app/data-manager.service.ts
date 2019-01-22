@@ -168,4 +168,9 @@ export class DataManagerService {
       console.log(JSON.stringify(this.data));
   }
 
+  //Método para borrar el token llamanso a apiService
+  deleteToken(){
+    this.api.deleteTokenApi();
+  }
+
 }

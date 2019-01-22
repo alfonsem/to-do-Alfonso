@@ -22,4 +22,8 @@ export class AddNewListComponent {
       ev.target.value = '';  //Vaciamos el input
     }
   }
+
+  logOut(){
+    this.dataManager.deleteToken();
+  }
 }

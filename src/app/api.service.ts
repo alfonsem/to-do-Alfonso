@@ -103,4 +103,9 @@ export class ApiService {
     const body = { task :taskName };
     return this.http.put('https://apitrello.herokuapp.com/tasks/'+idTask, body, options).toPromise();
   }
+
+  //Método para borrar el token
+  deleteTokenApi(){
+    this.jwt = '';
+  }
 }
